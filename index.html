@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple WebApp with Firebase Integration</title>
+    <img src="Images/Cubixx_Header.png" alt="Cubixx Header" class="header-image">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
+    <script>
+        // Ihre Firebase-Konfiguration
+        var firebaseConfig = {
+            apiKey: "AIzaSyASe-03_gMfgc-EPnqq-WD5BtMINE9mnz0",
+            authDomain: "cubixxtt.firebaseapp.com",
+            databaseURL:"https://cubixxtt-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "cubixxtt",
+            storageBucket: "cubixxtt.appspot.com",
+            messagingSenderId: "821359872963",
+            appId: "1:821359872963:web:6db61190e1f3870c33cb76"
+        };
+        // Initialisieren Sie Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Register / Login</h1>
+    </header>
+    <main>
+        <form id="dataForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        
+            <button type="submit">Submit</button>
+        </form>
+        
+        <!-- Placeholder for displaying data from Firebase -->
+        <div id="dataDisplay"></div>
+    </main>
+    <footer>
+        <p>WebApp for Firebase Integration</p>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>
