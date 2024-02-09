@@ -29,25 +29,24 @@
         <h1>Register / Login</h1>
     </header>
     <main>
-        <form id="dataForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-        
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        
-            <button type="submit">Submit</button>
-        </form>
+        <div id="main-container"> 
+            <form id="dataForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            
+                <button type="submit">Submit</button>
+            </form>
+        </div>
         
         <!-- Placeholder for displaying data from Firebase -->
         <div id="dataDisplay"></div>
     </main>
-    <footer>
-        <p>WebApp for Firebase Integration</p>
-    </footer>
     <script src="index.js"></script>
 </body>
 </html>

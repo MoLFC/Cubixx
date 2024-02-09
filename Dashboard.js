@@ -19,13 +19,14 @@ const database = getDatabase(app);
 
 // Reference to your database path
 const dataRef = ref(database, 'users/-NnB_1DAXTwkGegI1ENa/completed');
-
+let currentChartType = 'bar';// Globale Variable, um den aktuellen Diagrammtyp zu speichern
 
 // This callback is used to create the bar chart with the count of activities
 onValue(dataRef, (snapshot) => {
   const data = snapshot.val();
   const activityCounts = countChildren(data);
   createBarChart(activityCounts);
+  createPieChart(activityCounts);
 }, {
   onlyOnce: true
 });
@@ -97,6 +98,61 @@ function createBarChart(activityCounts) {
   new Chart(ctx, config);
 }
 
+function createPieChart(activityCounts) {
+  const ctx = document.getElementById('myPieChart').getContext('2d'); 
+  const data = {
+    labels: Object.keys(activityCounts),
+    datasets: [{
+      data: Object.values(activityCounts),
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.4)',
+        'rgba(54, 162, 235, 0.4)',
+        'rgba(255, 206, 86, 0.4)',
+        'rgba(75, 192, 192, 0.4)',
+        'rgba(153, 102, 255, 0.4)',
+        'rgba(255, 159, 64, 0.4)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  };
+  const config = {
+    type: 'pie',
+    data: data,
+  };
+  new Chart(ctx, config);
+}
+
+function toggleChart() {
+  const chartImage = document.getElementById('chartImage');
+  if (currentChartType === 'bar') {
+    currentChartType = 'pie';
+    document.getElementById('myChart').style.display = 'none';
+    document.getElementById('myPieChart').style.display = 'block';
+    chartImage.src = 'assets/BarChart.png'; 
+  } else {
+    currentChartType = 'bar';
+    document.getElementById('myChart').style.display = 'block';
+    document.getElementById('myPieChart').style.display = 'none';
+    chartImage.src = 'assets/PieChart.png'; 
+  }
+}
+
+// Event Listener für den Button
+document.getElementById('toggleChart').addEventListener('click', toggleChart);
+
+// Initialisiere das Balkendiagramm als sichtbar und das Kreisdiagramm als unsichtbar
+document.getElementById('myChart').style.display = 'block';
+document.getElementById('myPieChart').style.display = 'none';
+
+
 function calculateSums(data) {
   const sums = {};
   for (const activity in data) {
@@ -136,9 +192,9 @@ function createSumsTable(activitySums) {
   const thead = document.createElement('thead');
   const headerRow = document.createElement('tr');
   const activityHeader = document.createElement('th');
-  activityHeader.textContent = 'Aktivität';
+  activityHeader.textContent = 'Activity';
   const sumHeader = document.createElement('th');
-  sumHeader.textContent = 'Gesamtstunden';
+  sumHeader.textContent = 'Total Duration';
   headerRow.appendChild(activityHeader);
   headerRow.appendChild(sumHeader);
   thead.appendChild(headerRow);
@@ -160,4 +216,3 @@ function createSumsTable(activitySums) {
   tableContainer.innerHTML = '';
   tableContainer.appendChild(table);
 }
-

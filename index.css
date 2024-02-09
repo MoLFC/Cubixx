@@ -4,7 +4,9 @@
     height: auto; /* Höhe wird automatisch angepasst, um das Seitenverhältnis beizubehalten */
     display: block; /* Block-Level-Element, um keine Ränder zu haben */
     margin: 0 auto; /* Zentriert das Bild horizontal */
+    margin-top: 50px;
 }
+
 
 body {
     font-family: 'Comic Neue', Arial, sans-serif;
@@ -17,8 +19,25 @@ body {
 }
 
 header {
-    background-color: #B388EB; /* lila */
+    width: 50%;
+    background-color: #BD10E0; /* lila */
     padding: 0; /* Entfernen des Paddings, da es durch das Bild ersetzt wird */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* Zentriert die Inhalte horizontal */
+    align-items: center; /* Zentriert die Inhalte vertikal */
+    height: 100px; /* Definiere eine Höhe für den Container */
+    margin-top: 200px;
+}
+
+#main-container {
+    width: 50.5%;
+    border: 1px solid #BD10E0;
+    padding: 0px;
+    margin-top: -430px;
+    box-shadow: 10px 10px 70px rgba(58, 4, 68, 0.4); /* Optional: Schatten für Tiefe */
+    background-color: white; /* Hintergrundfarbe */
+    height: 0 auto;
 }
 
 main {
@@ -63,8 +82,4 @@ button:hover {
     background-color: #65499c; /* eine dunklere Schattierung von lila für Hover */
 }
 
-footer {
-    background-color: #f1f1f1;
-    text-align: center;
-    padding: 1em 0;
-}
+
