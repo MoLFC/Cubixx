@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Firebase Data Display</title>
+    <img src="assets/Cubixx_Header.png" alt="Cubixx Header" class="header-image">
     <link rel="stylesheet" href="dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
@@ -10,10 +12,17 @@
     <script type="module" src="Dashboard.js"></script>
 </head>
 <body>
-    <div id="data-container">
-        <h1>Data from Firebase</h1>
-        <canvas id="myChart"></canvas>
-        <pre id="data-output"></pre>
+    <div id="main-container"> <!-- Hauptcontainer, der alles umfasst -->
+        <div class="profile-info">
+            <h2>Your Time Tracking history</h2>
+            <img src='assets/female-girl-image.png' alt="default user img" class="UserImage">
+        </div>
+        <div id="sumsTableContainer"></div>
+        <div id="data-container">
+            <canvas id="myChart"></canvas>
+            <pre id="data-output"></pre>
+        </div>
+        
     </div>
 </body>
 </html>
